@@ -1,0 +1,6 @@
+framework module APWifiConfig {
+  umbrella header "APWifiConfig.h"
+
+  export *
+  module * { export * }
+}

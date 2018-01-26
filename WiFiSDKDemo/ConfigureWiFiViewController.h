@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  ConfigureWiFiViewController.h
 //  WiFiSDKDemo
 //
 //  Created by San on 2018/1/25.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface ConfigureWiFiViewController : UIViewController
 
 @end
-
