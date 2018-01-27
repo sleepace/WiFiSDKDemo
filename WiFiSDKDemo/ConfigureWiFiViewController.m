@@ -44,7 +44,6 @@
     [self setUI];
     
     con= [[SLPApWifiConfig alloc]init];
-    
 }
 
 - (void)setUI

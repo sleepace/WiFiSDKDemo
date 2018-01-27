@@ -37,6 +37,7 @@
 		267A07DB2019D7FF0025AC13 /* sdk_btn_back@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 267A07C32019D7FF0025AC13 /* sdk_btn_back@3x.png */; };
 		267A07DC2019D7FF0025AC13 /* sdk_btn_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 267A07C42019D7FF0025AC13 /* sdk_btn_back@2x.png */; };
 		267A08132019DFFC0025AC13 /* SLPMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 267A08122019DFFC0025AC13 /* SLPMenuButton.m */; };
+		26926877201C12DC00D5B799 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 26926879201C12DC00D5B799 /* InfoPlist.strings */; };
 		26E46561201ABB030040D05F /* SLPPopMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E46558201ABB020040D05F /* SLPPopMenuViewController.m */; };
 		26E46563201ABB030040D05F /* SLPPopMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E4655D201ABB020040D05F /* SLPPopMenuItem.m */; };
 		26E46564201ABB030040D05F /* SLPPopMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E4655E201ABB020040D05F /* SLPPopMenuCell.m */; };
@@ -79,6 +80,8 @@
 		267A07C42019D7FF0025AC13 /* sdk_btn_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sdk_btn_back@2x.png"; sourceTree = "<group>"; };
 		267A08112019DFFC0025AC13 /* SLPMenuButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLPMenuButton.h; sourceTree = "<group>"; };
 		267A08122019DFFC0025AC13 /* SLPMenuButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLPMenuButton.m; sourceTree = "<group>"; };
+		26926878201C12DC00D5B799 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2692687A201C12DE00D5B799 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		26E46558201ABB020040D05F /* SLPPopMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLPPopMenuViewController.m; sourceTree = "<group>"; };
 		26E46559201ABB020040D05F /* SLPPopMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLPPopMenuCell.h; sourceTree = "<group>"; };
 		26E4655A201ABB020040D05F /* SLPPopMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLPPopMenuItem.h; sourceTree = "<group>"; };
@@ -143,6 +146,7 @@
 			children = (
 				267A07AA2019D7FF0025AC13 /* icon */,
 				267A078F2019C6E40025AC13 /* Localizable.strings */,
+				26926879201C12DC00D5B799 /* InfoPlist.strings */,
 				267A078E2019C6E40025AC13 /* sdk_icon_nav_downarrow@2x.png */,
 				267A07922019C6E40025AC13 /* sdk_icon_nav_downarrow@3x.png */,
 				267A07932019C6E40025AC13 /* sdk_btn_refresh_nor@2x.png */,
@@ -264,6 +268,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				267A07982019C6E40025AC13 /* Localizable.strings in Resources */,
+				26926877201C12DC00D5B799 /* InfoPlist.strings in Resources */,
 				267A079B2019C6E40025AC13 /* sdk_btn_refresh_nor@3x.png in Resources */,
 				267A07CB2019D7FF0025AC13 /* sdk_dot_40.png in Resources */,
 				267A07CD2019D7FF0025AC13 /* sdk_dot_80.png in Resources */,
@@ -324,6 +329,15 @@
 				267A07912019C6E40025AC13 /* en */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		26926879201C12DC00D5B799 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				26926878201C12DC00D5B799 /* en */,
+				2692687A201C12DE00D5B799 /* zh-Hans */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

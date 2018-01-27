@@ -112,7 +112,6 @@ enum{
 
 #define kLTCPDefaultTimeoutInterval (10.0)
 #define kBLEDefaultConnectTimeoutInterval (10.0)
-#define kTCPSpecialID (0xC350)//新TCP协议中的特殊标识符
 //获取TCP消息类型的描述
 @interface SLPLTcpCommon : NSObject
 
