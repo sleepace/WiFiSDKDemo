@@ -62,8 +62,8 @@
     
     self.textfield1.placeholder = NSLocalizedString(@"input_wifi_name", nil);
     self.textfield2.placeholder = NSLocalizedString(@"input_wifi_psw", nil);
-    self.textfield1.text = @"medica_2";
-    self.textfield2.text = @"11221122";
+//    self.textfield1.text = @"medica_2";
+//    self.textfield2.text = @"11221122";
 }
 
 
@@ -96,16 +96,19 @@
     
     [con configDevice:[self backDevicetypeFromID:currentDevciceId] serverAddress:[self backAddressFromID:currentDevciceId] port:[self backPortFromID:currentDevciceId] wifiName:self.textfield1.text password:self.textfield2.text completion:^(BOOL succeed, id data) {
         NSString *result=@"";
+        NSString *title=nil;
         if (succeed) {
             NSLog(@"send succeed!");
-            result = NSLocalizedString(@"reminder_configuration_success", nil);
+            title = NSLocalizedString(@"reminder_configuration_success", nil);
+            SLPDeviceInfo *deviceInfo= (SLPDeviceInfo *)data;
+            result =[NSString stringWithFormat:@"deviceId=%@,version=%@",deviceInfo.deviceID,deviceInfo.version];
         }
         else
         {
             NSLog(@"send failed!");
             result = NSLocalizedString(@"reminder_configuration_fail", nil);
         }
-        UIAlertView *alertview =[[ UIAlertView alloc]initWithTitle:nil message:result delegate:self cancelButtonTitle:NSLocalizedString(@"btn_ok", nil) otherButtonTitles: nil];
+        UIAlertView *alertview =[[ UIAlertView alloc]initWithTitle:title message:result delegate:self cancelButtonTitle:NSLocalizedString(@"btn_ok", nil) otherButtonTitles: nil];
         [alertview show];
     }];
 }
