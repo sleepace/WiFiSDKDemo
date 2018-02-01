@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2607FAE320205C6B000C576F /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2607FADF20205C6B000C576F /* MBProgressHUD.m */; };
+		2607FAE420205C6B000C576F /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 2607FAE020205C6B000C576F /* LICENSE */; };
+		2607FAE520205C6B000C576F /* README.mdown in Resources */ = {isa = PBXBuildFile; fileRef = 2607FAE220205C6B000C576F /* README.mdown */; };
 		267A072820197DA20025AC13 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 267A072720197DA20025AC13 /* AppDelegate.m */; };
 		267A073020197DA20025AC13 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 267A072F20197DA20025AC13 /* Assets.xcassets */; };
 		267A073320197DA20025AC13 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 267A073120197DA20025AC13 /* LaunchScreen.storyboard */; };
@@ -44,6 +47,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2607FADF20205C6B000C576F /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		2607FAE020205C6B000C576F /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		2607FAE120205C6B000C576F /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		2607FAE220205C6B000C576F /* README.mdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.mdown; sourceTree = "<group>"; };
 		267A072320197DA20025AC13 /* WiFiSDKDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WiFiSDKDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		267A072620197DA20025AC13 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		267A072720197DA20025AC13 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -104,9 +111,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2607FADE20205C6B000C576F /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				2607FADF20205C6B000C576F /* MBProgressHUD.m */,
+				2607FAE020205C6B000C576F /* LICENSE */,
+				2607FAE120205C6B000C576F /* MBProgressHUD.h */,
+				2607FAE220205C6B000C576F /* README.mdown */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
 		267A071A20197DA20025AC13 = {
 			isa = PBXGroup;
 			children = (
+				2607FADE20205C6B000C576F /* MBProgressHUD */,
 				267A07A62019CE3F0025AC13 /* APWifiConfig.framework */,
 				267A07A42019CE3F0025AC13 /* SLPCommon.framework */,
 				267A07A52019CE3F0025AC13 /* SLPTCP.framework */,
@@ -276,9 +295,11 @@
 				267A07DB2019D7FF0025AC13 /* sdk_btn_back@3x.png in Resources */,
 				267A07C82019D7FF0025AC13 /* sdk_dot_60.png in Resources */,
 				267A07C52019D7FF0025AC13 /* sdk_dot_28.png in Resources */,
+				2607FAE420205C6B000C576F /* LICENSE in Resources */,
 				267A07CA2019D7FF0025AC13 /* sdk_dot_58.png in Resources */,
 				267A07CE2019D7FF0025AC13 /* sdk_dot_120.png in Resources */,
 				267A07DC2019D7FF0025AC13 /* sdk_btn_back@2x.png in Resources */,
+				2607FAE520205C6B000C576F /* README.mdown in Resources */,
 				267A07C62019D7FF0025AC13 /* sdk_dot_60@2x.png in Resources */,
 				267A07622019822E0025AC13 /* ConfigureWiFiViewController.xib in Resources */,
 				267A07CF2019D7FF0025AC13 /* sdk_dot_87.png in Resources */,
@@ -308,6 +329,7 @@
 				267A08132019DFFC0025AC13 /* SLPMenuButton.m in Sources */,
 				26E46564201ABB030040D05F /* SLPPopMenuCell.m in Sources */,
 				267A072820197DA20025AC13 /* AppDelegate.m in Sources */,
+				2607FAE320205C6B000C576F /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

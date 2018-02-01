@@ -11,8 +11,9 @@
 #import <SystemConfiguration/CaptiveNetwork.h>
 #import "SLPPopMenuItem.h"
 #import "SLPPopMenuViewController.h"
+#import "MBProgressHUD.h"
 
-@interface ConfigureWiFiViewController ()
+@interface ConfigureWiFiViewController ()<UITextFieldDelegate>
 {
     SLPApWifiConfig *con;
     
@@ -50,9 +51,9 @@
 {
     self.label1.text = NSLocalizedString(@"step1", nil);
     self.label2.text = NSLocalizedString(@"ap_mode", nil);
-    self.label3.text = NSLocalizedString(@"step2", nil);
+    self.label3.text = NSLocalizedString(@"step3", nil);
     self.label4.text = NSLocalizedString(@"select_wifi", nil);
-    self.label5.text = NSLocalizedString(@"step3", nil);
+    self.label5.text = NSLocalizedString(@"step2", nil);
     self.label6.text = NSLocalizedString(@"reminder_connect_hotspot1", nil);
     
     [self.configureBT setTitle:NSLocalizedString(@"pair_wifi", nil) forState:UIControlStateNormal];
@@ -64,6 +65,9 @@
     self.textfield2.placeholder = NSLocalizedString(@"input_wifi_psw", nil);
 //    self.textfield1.text = @"medica_2";
 //    self.textfield2.text = @"11221122";
+    
+    self.textfield1.delegate=self;
+    self.textfield2.delegate=self;
 }
 
 
@@ -93,22 +97,28 @@
         [alertview show];
         return ;
     }
-    
+    if (!self.textfield1.text.length) {
+        NSString *message = NSLocalizedString(@"input_wifi_name", nil);
+        UIAlertView *alertview =[[ UIAlertView alloc]initWithTitle:nil message:message delegate:self cancelButtonTitle:NSLocalizedString(@"btn_ok", nil) otherButtonTitles: nil];
+        [alertview show];
+        return ;
+    }
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [con configDevice:[self backDevicetypeFromID:currentDevciceId] serverAddress:[self backAddressFromID:currentDevciceId] port:[self backPortFromID:currentDevciceId] wifiName:self.textfield1.text password:self.textfield2.text completion:^(BOOL succeed, id data) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
         NSString *result=@"";
-        NSString *title=nil;
         if (succeed) {
             NSLog(@"send succeed!");
-            title = NSLocalizedString(@"reminder_configuration_success", nil);
-            SLPDeviceInfo *deviceInfo= (SLPDeviceInfo *)data;
-            result =[NSString stringWithFormat:@"deviceId=%@,version=%@",deviceInfo.deviceID,deviceInfo.version];
+            result = NSLocalizedString(@"reminder_configuration_success", nil);
+//            SLPDeviceInfo *deviceInfo= (SLPDeviceInfo *)data;
+//            result =[NSString stringWithFormat:@"deviceId=%@,version=%@",deviceInfo.deviceID,deviceInfo.version];
         }
         else
         {
             NSLog(@"send failed!");
             result = NSLocalizedString(@"reminder_configuration_fail", nil);
         }
-        UIAlertView *alertview =[[ UIAlertView alloc]initWithTitle:title message:result delegate:self cancelButtonTitle:NSLocalizedString(@"btn_ok", nil) otherButtonTitles: nil];
+        UIAlertView *alertview =[[ UIAlertView alloc]initWithTitle:nil message:result delegate:self cancelButtonTitle:NSLocalizedString(@"btn_ok", nil) otherButtonTitles: nil];
         [alertview show];
     }];
 }
@@ -172,10 +182,12 @@
     NSString *address = @"";
     switch (itemId.integerValue) {
         case 0:
-            address = @"http://172.14.1.100:9880";;
+//            address = @"http://172.14.1.100:9880";
+            address = @"https://webapi.test.sleepace.net";
             break;
         case 1:
-            address = @"172.14.1.100";
+//            address = @"172.14.1.100";
+            address = @"120.24.169.204";
             break;
         default:
             break;
@@ -222,6 +234,28 @@
         [self.textfield2 resignFirstResponder];
     }
 }
+
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    [UIView animateWithDuration:0.5 animations:^{
+        CGRect rect=self.view.frame;
+        CGFloat y_value=rect.origin.y-120;
+        rect.origin.y=y_value;
+        self.view.frame=rect;
+    }];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    [UIView animateWithDuration:0.3 animations:^{
+        CGRect rect=self.view.frame;
+        CGFloat y_value=rect.origin.y+120;
+        rect.origin.y=y_value;
+        self.view.frame=rect;
+    }];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
