@@ -26,9 +26,13 @@
 @property (nonatomic,weak) IBOutlet UILabel *label4;
 @property (nonatomic,weak) IBOutlet UILabel *label5;
 @property (nonatomic,weak) IBOutlet UILabel *label6;
+@property (nonatomic,weak) IBOutlet UILabel *label7;
+@property (nonatomic,weak) IBOutlet UILabel *label8;
 @property (nonatomic,weak) IBOutlet UILabel *titleLabel;
 @property (nonatomic,weak) IBOutlet UITextField *textfield1;
 @property (nonatomic,weak) IBOutlet UITextField *textfield2;
+@property (nonatomic,weak) IBOutlet UITextField *textfield3;
+@property (nonatomic,weak) IBOutlet UITextField *textfield4;
 @property (nonatomic,weak) IBOutlet UIButton *configureBT;
 @property (nonatomic,weak) IBOutlet UIView *navigationShell;
 @property (nonatomic,weak) IBOutlet UIView *containView;
@@ -55,7 +59,9 @@
     self.label4.text = NSLocalizedString(@"select_wifi", nil);
     self.label5.text = NSLocalizedString(@"step2", nil);
     self.label6.text = NSLocalizedString(@"reminder_connect_hotspot1", nil);
-    
+    self.label7.text = NSLocalizedString(@"step3", nil);
+    self.label8.text = NSLocalizedString(@"设备要连接的地址和端口", nil);
+
     [self.configureBT setTitle:NSLocalizedString(@"pair_wifi", nil) forState:UIControlStateNormal];
     self.configureBT.layer.cornerRadius =25.0f;
     self.titleLabel.text = @"RestOn Z400TWB";
@@ -63,13 +69,24 @@
     
     self.textfield1.placeholder = NSLocalizedString(@"input_wifi_name", nil);
     self.textfield2.placeholder = NSLocalizedString(@"input_wifi_psw", nil);
+    
 //    self.textfield1.text = @"medica_2";
 //    self.textfield2.text = @"11221122";
-    
+    [self refreshServerAddressAndPort];
+//    self.textfield3.text = [self backAddressFromID:currentDevciceId];
+//    self.textfield4.text = [NSString stringWithFormat:@"%ld",(long)[self backPortFromID:currentDevciceId]];
+
     self.textfield1.delegate=self;
     self.textfield2.delegate=self;
+    self.textfield3.delegate=self;
+    self.textfield4.delegate=self;
 }
 
+- (void)refreshServerAddressAndPort
+{
+    self.textfield3.text = [self backAddressFromID:currentDevciceId];
+    self.textfield4.text = [NSString stringWithFormat:@"%ld",(long)[self backPortFromID:currentDevciceId]];
+}
 
 - (IBAction)selectDevice:(id)sender {
     
@@ -81,6 +98,7 @@
     popVc.didSelectedItemBlock = ^(SLPPopMenuItem *item){
         currentDevciceId = item.itemid;
         weakSelf.titleLabel.text = item.itemtitle;
+        [weakSelf refreshServerAddressAndPort];
         [weakPopVc.view removeFromSuperview];
         [weakPopVc removeFromParentViewController];
     };
@@ -104,7 +122,7 @@
         return ;
     }
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [con configDevice:[self backDevicetypeFromID:currentDevciceId] serverAddress:[self backAddressFromID:currentDevciceId] port:[self backPortFromID:currentDevciceId] wifiName:self.textfield1.text password:self.textfield2.text completion:^(BOOL succeed, id data) {
+    [con configDevice:[self backDevicetypeFromID:currentDevciceId] serverAddress:self.textfield3.text port:self.textfield4.text.integerValue wifiName:self.textfield1.text password:self.textfield2.text completion:^(BOOL succeed, id data) {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         NSString *result=@"";
         if (succeed) {
@@ -233,6 +251,12 @@
     if (self.textfield2.isEditing) {
         [self.textfield2 resignFirstResponder];
     }
+    if (self.textfield3.isEditing) {
+        [self.textfield3 resignFirstResponder];
+    }
+    if (self.textfield4.isEditing) {
+        [self.textfield4 resignFirstResponder];
+    }
 }
 
 
@@ -240,7 +264,7 @@
 {
     [UIView animateWithDuration:0.5 animations:^{
         CGRect rect=self.view.frame;
-        CGFloat y_value=rect.origin.y-150;
+        CGFloat y_value=rect.origin.y-240;
         rect.origin.y=y_value;
         self.view.frame=rect;
     }];
@@ -250,12 +274,18 @@
 {
     [UIView animateWithDuration:0.3 animations:^{
         CGRect rect=self.view.frame;
-        CGFloat y_value=rect.origin.y+150;
+        CGFloat y_value=rect.origin.y+240;
         rect.origin.y=y_value;
         self.view.frame=rect;
     }];
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    
+    return YES;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
